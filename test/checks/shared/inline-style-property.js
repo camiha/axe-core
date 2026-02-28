@@ -74,6 +74,39 @@ describe('inline-style-property tests', () => {
       });
     });
 
+    it('is true when the element is empty', () => {
+      const params = checkSetup(
+        '<div style="letter-spacing: 0.1em !important;" id="target"></div>'
+      );
+      const result = checkEvaluate.apply(checkContext, params);
+      assert.isTrue(result);
+      assert.isNull(checkContext._data);
+    });
+
+    it('is true when text is only in a child that overrides the spacing', () => {
+      const params = checkSetup(
+        '<div style="letter-spacing: 0.1em !important" id="target">' +
+          '<p style="letter-spacing: 0.2em !important;">' +
+          'The toy brought back fond memories of being lost in the rain forest.' +
+          '</p>' +
+          '</div>'
+      );
+      const result = checkEvaluate.apply(checkContext, params);
+      assert.isTrue(result);
+      assert.isNull(checkContext._data);
+    });
+
+    it('is true when text is only in a child with a smaller font-size', () => {
+      const params = checkSetup(
+        '<div style="font-size: 16px; letter-spacing: 2px !important" id="target">' +
+          '<p style="font-size: 10px;">Hello world</p>' +
+          '</div>'
+      );
+      const result = checkEvaluate.apply(checkContext, params);
+      assert.isTrue(result);
+      assert.isNull(checkContext._data);
+    });
+
     describe('handles different font-sizes', () => {
       it('is true when the font is 0.15 time the spacing', () => {
         const params = checkSetup(
@@ -228,6 +261,39 @@ describe('inline-style-property tests', () => {
         value: 0.16,
         minValue: 0.16
       });
+    });
+
+    it('is true when the element is empty', () => {
+      const params = checkSetup(
+        '<div style="word-spacing: 0.1em !important;" id="target"></div>'
+      );
+      const result = checkEvaluate.apply(checkContext, params);
+      assert.isTrue(result);
+      assert.isNull(checkContext._data);
+    });
+
+    it('is true when text is only in a child that overrides the spacing', () => {
+      const params = checkSetup(
+        '<div style="word-spacing: 0.1em !important" id="target">' +
+          '<p style="word-spacing: 0.2em !important;">' +
+          'The toy brought back fond memories of being lost in the rain forest.' +
+          '</p>' +
+          '</div>'
+      );
+      const result = checkEvaluate.apply(checkContext, params);
+      assert.isTrue(result);
+      assert.isNull(checkContext._data);
+    });
+
+    it('is true when text is only in a child with a smaller font-size', () => {
+      const params = checkSetup(
+        '<div style="font-size: 16px; word-spacing: 2px !important" id="target">' +
+          '<p style="font-size: 10px;">Hello world</p>' +
+          '</div>'
+      );
+      const result = checkEvaluate.apply(checkContext, params);
+      assert.isTrue(result);
+      assert.isNull(checkContext._data);
     });
   });
 

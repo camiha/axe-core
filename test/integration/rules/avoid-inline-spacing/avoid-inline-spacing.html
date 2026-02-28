@@ -30,6 +30,30 @@
 <p id="pass12" style="line-height: revert !important">Banana<br />pass</p>
 <p id="pass13" style="line-height: revert-layer !important">Banana<br />pass</p>
 
+<!-- No direct text node -->
+<div id="pass14" style="letter-spacing: 0.1em !important"></div>
+<div id="pass15" style="word-spacing: 0.1em !important"></div>
+<div id="pass16" style="letter-spacing: 0.1em !important">
+  <p id="pass16-child" style="letter-spacing: 0.2em !important">
+    The toy brought back fond memories of being lost in the rain forest.
+  </p>
+</div>
+<div id="pass17" style="word-spacing: 0.1em !important">
+  <p id="pass17-child" style="word-spacing: 0.2em !important">
+    The toy brought back fond memories of being lost in the rain forest.
+  </p>
+</div>
+<div id="pass18" style="font-size: 16px; letter-spacing: 2px !important">
+  <p id="pass18-child" style="font-size: 10px">
+    The toy brought back fond memories of being lost in the rain forest.
+  </p>
+</div>
+<div id="pass19" style="font-size: 16px; word-spacing: 2px !important">
+  <p id="pass19-child" style="font-size: 10px">
+    The toy brought back fond memories of being lost in the rain forest.
+  </p>
+</div>
+
 <!-- Fail -->
 <p id="fail1" style="line-height: 1.4em !important">Banana<br />error</p>
 <p id="fail2" style="letter-spacing: 0.1em !important">
